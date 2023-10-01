@@ -9,14 +9,15 @@ text = QTextEdit()
 
 bludfish = QLabel("список тегів")
 nener = QLabel("пошук тегів")
-textjer = QLineEdit
-titwar0 = QPushButton()
-titwar1 = QPushButton()
-titwar2 = QPushButton()
-titwar3 = QPushButton()
-titwar4 = QPushButton()
-titwar5 = QPushButton()
-arktika = QListWidget()
+textjer = QLineEdit()
+
+titwar0 = QPushButton("")
+titwar1 = QPushButton("")
+titwar2 = QPushButton("")
+titwar3 = QPushButton("")
+titwar4 = QPushButton("")
+titwar5 = QPushButton("")
+arktika = QListWidget("")
 jegfa = QListWidget()
 
 mainLine = QHBoxLayout()
@@ -35,7 +36,7 @@ v1 = QVBoxLayout()
 v1.addWidget(text)
 
 
-
+v2 = QVBoxLayout(textjer)
 v2 = QVBoxLayout()
 v2.addWidget(bludfish)
 v2.addWidget(arktika)
