@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import *
 
 app = QApplication([])
 
+
 import json
 
 try:
@@ -16,6 +17,12 @@ except:
 
 window = QWidget()
 window.resize(800, 460)
+
+
+
+window = QWidget()
+window.resize(800, 500)
+
 mainline = QHBoxLayout()
 app.setStyleSheet("""
     QWidget {
@@ -71,6 +78,7 @@ line2.addWidget(titwar4)
 line2.addWidget(titwar5)
 linemenu.addLayout(line2)
 linemenu.addWidget(titwar6)
+
 
 def add_note():
     note_name, ok = QInputDialog.getText(window, "Додати замітку","Назва замітки")
@@ -132,4 +140,8 @@ print(notes)
 pole2.addItems(notes)
 
 
+app.exec()
+
+window.setLayout(mainline)
+window.show()
 app.exec()
