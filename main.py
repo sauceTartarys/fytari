@@ -1,12 +1,15 @@
 from PyQt5.QtWidgets import *
 
 app = QApplication([])
-window = QWidget()
 
-window.resize(600,600)
+
+
+window = QWidget()
+window.resize(800, 500)
+mainline = QHBoxLayout()
 app.setStyleSheet("""
     QWidget {
-        background-color: yellow;
+        background-color: purple;
     }
 
     QPushButton{
@@ -24,64 +27,41 @@ app.setStyleSheet("""
         }
 """)
 
-text = QTextEdit()
+titwar1 = QPushButton('створити замітку')
+titwar2 = QPushButton('видалити замітку')
+titwar3 = QPushButton('зберегти замітку')
+titwar4 = QPushButton('додати до замітки')
+titwar5 = QPushButton('відкріпити від замітки')
+titwar6 = QPushButton('Шукати по тегу')
+text1 = QLabel('список заміток')
+text2 = QLabel('список тегів')
+pole1 = QTextEdit()
+pole2 = QListWidget()
+pole3 = QListWidget()
+pole4 = QLineEdit()
 
-bludfish = QLabel("список тегів")
-nener = QLabel("пошук тегів")
-textjer = QLineEdit()
-
-titwar0 = QPushButton("основа")
-titwar1 = QPushButton("оукв")
-titwar2 = QPushButton("яйко")
-titwar3 = QPushButton("пупумпум")
-titwar4 = QPushButton("пуши яйко")
-titwar5 = QPushButton("пампампам")
-
-arktika = QListWidget()
-jegfa = QListWidget()
-
-mainLine = QHBoxLayout()
-mainLine.addWidget(text)
-line1 = QVBoxLayout()
-lines2 = QVBoxLayout()
+linepole = QVBoxLayout()
+linemenu = QVBoxLayout()
+line1 = QHBoxLayout()
 line2 = QHBoxLayout()
-line3 = QHBoxLayout()
 
-mainLine.addLayout(line1)
+mainline.addLayout(linepole)
+mainline.addLayout(linemenu)
+linepole.addWidget(pole1)
+linemenu.addWidget(text1)
+linemenu.addWidget(pole2)
+line1.addWidget(titwar1)
+line1.addWidget(titwar2)
+linemenu.addLayout(line1)
+linemenu.addWidget(titwar3)
+linemenu.addWidget(text2)
+linemenu.addWidget(pole3)
+linemenu.addWidget(pole4)
+line2.addWidget(titwar4)
+line2.addWidget(titwar5)
+linemenu.addLayout(line2)
+linemenu.addWidget(titwar6)
 
-line1.addLayout(line2)
-line1.addLayout(line3)
-
-v1 = QVBoxLayout()
-v1.addWidget(text)
-
-
-v2 = QVBoxLayout(textjer)
-v2 = QVBoxLayout()
-v2.addWidget(bludfish)
-v2.addWidget(arktika)
-
-v2.addWidget(titwar4)
-v2.addWidget(titwar2,)
-
-v2.addWidget(titwar3),
-
-v2.addWidget(nener)
-mainLine.addLayout(v2)
-
-v2.addWidget(jegfa)
-v2.addWidget(titwar1)
-v2.addWidget(titwar0)
-v2.addWidget(titwar5)
-
-
-
-
-
-
-
-
-
-window.setLayout(mainLine)
+window.setLayout(mainline)
 window.show()
 app.exec()
