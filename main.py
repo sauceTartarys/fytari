@@ -18,6 +18,7 @@ app.setStyleSheet("""
         font-size: 15px;
     }
 
+<<<<<<< HEAD
     QPushButton {
         background-color: blue;
         color : purple;
@@ -38,9 +39,28 @@ app.setStyleSheet("""
     }
 
 """)
+=======
+import json
+
+try:
+    with open("notes_data.json", "r", encoding="utf-8") as file:
+        notes = json.load(file)
+
+except:
+    notes = {}
+
+
+
+
+window = QWidget()
+window.resize(800, 460)
+
+
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
 
 window = QWidget()
 window.resize(800, 500)
+
 mainline = QHBoxLayout()
 
 titwar1 = QPushButton('створити замітку')
@@ -80,12 +100,17 @@ linemenu.addWidget(titwar6)
 
 
 def add_note():
+<<<<<<< HEAD
     note_name, ok = QInputDialog.getText(window, "Дотати заміну", "Назва замітки")
+=======
+    note_name, ok = QInputDialog.getText(window, "Додати замітку","Назва замітки")
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
     if ok and note_name != "":
         notes[note_name] = {
             "текст": "",
             "теги": []
         }
+<<<<<<< HEAD
         pole2.clear()
         pole1.clear()
         pole2.addItems(notes)
@@ -104,6 +129,13 @@ def save_note():
         print("Замітка для збереження не вибрана!")
 
 
+=======
+    pole2.clear()
+    pole1.clear()
+    pole2.addItems(notes)
+    with open("notes_data.json", "w", encoding="utf-8") as file:
+        json.dump(notes, file, ensure_ascii=False, indent=4)
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
 def show_note():
     # отримуємо текст із замітки з виділеною назвою та відображаємо її в полі редагування
     key = pole2.selectedItems()[0].text()
@@ -113,13 +145,33 @@ def show_note():
     pole3.addItems(notes[key]["теги"])
 
 
+<<<<<<< HEAD
+=======
+pole2.itemClicked.connect(show_note)
+
+def save_note():
+    if pole2.selectedItems():
+        key = pole2.selectedItems()[0].text()
+        notes[key]["текст"] = pole1.toPlainText()
+        with open("notes_data.json", "w", encoding="utf-8") as file:
+                json.dump(notes, file, ensure_ascii=False)
+    else:
+                print("Замітка для збереження не вибрана!")
+
+
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
 def del_note():
     if pole2.selectedItems():
         key = pole2.selectedItems()[0].text()
         notes.pop(key)
         pole2.clear()
+<<<<<<< HEAD
         pole3.clear()
         pole1.clear()
+=======
+        pole1.clear()
+        pole3.clear()
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
         pole2.addItems(notes)
         with open("notes_data.json", "w", encoding="utf-8") as file:
             json.dump(notes, file, sort_keys=True, ensure_ascii=False, indent=4)
@@ -128,6 +180,7 @@ def del_note():
         print("Замітка для вилучення не обрана!")
 
 
+<<<<<<< HEAD
 def add_tag():  # кнопка добавити тег
     if pole2.selectedItems():
         key = pole2.selectedItems()[0].text()
@@ -195,3 +248,22 @@ titwar4.clicked.connect(add_tag)
 titwar5.clicked.connect(del_tag)
 titwar6.clicked.connect(search_tag)
 pole2.itemClicked.connect(show_note)
+=======
+titwar1.clicked.connect(add_note)
+
+
+titwar3.clicked.connect(save_note)
+
+
+window.setLayout(mainline)
+window.show()
+print(notes)
+pole2.addItems(notes)
+
+
+app.exec()
+
+window.setLayout(mainline)
+window.show()
+app.exec()
+>>>>>>> a3338709bb5ff56b1572248b22e3ad17a74e1b78
